@@ -1,8 +1,10 @@
 'use client';
 
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function LocalNews() {
+
+
   return (
     <div>LocalNews</div>
   )
