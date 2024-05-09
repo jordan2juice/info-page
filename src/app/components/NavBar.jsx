@@ -2,9 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import ModalSignUp from "./ModalSignUp";
 
 export default function NavBar() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div>
       <header className="text-gray-600 body-font">
@@ -13,11 +18,11 @@ export default function NavBar() {
             <Image height={50} width={150} src={"/logo.png"}></Image>
           </Link>
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-            <Link href={""} className="mr-5 hover: text-red-900">
+            <Link href={"/"} className="mr-5 hover: text-red-900">
               Home
             </Link>
-            <Link href={""} className="mr-5 hover: text-red-900">
-              About
+            <Link href={"/dashboard"} className="mr-5 hover: text-red-900">
+              Dashboard
             </Link>
             <Link href={""} className="mr-5 hover: text-red-900">
               Contact
@@ -26,9 +31,17 @@ export default function NavBar() {
               Blog
             </Link>
           </nav>
-          <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+          <button
+            onClick={handleShow}
+            className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+          >
             Sign up
           </button>
+          <ModalSignUp
+            show={show}
+            handleClose={handleClose}
+            handleShow={handleShow}
+          />
         </div>
       </header>
     </div>

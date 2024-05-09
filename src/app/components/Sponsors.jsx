@@ -2,20 +2,30 @@
 
 import React from "react";
 import { sponsors } from "../sponsors.list";
+import { Card, CardBody, CardText, CardTitle } from "react-bootstrap";
 
 export default function Sponsors() {
   // console.log(process.env.NEXT_PUBLIC_SPONSORS)
 
-  return <div>
-    <h2>Meet Our Sproncors</h2>
-    {sponsors.map((sponsor, index) => (
-        <div key={index}>
-          <h3>{sponsor.name}</h3>
-          <p>{sponsor.description}</p>
-          <p>{sponsor.contact}</p>
-          <img src={`/sponsors/${sponsor.src}.png`} alt={sponsor.name} />
-        </div>
-    ))}
-
-  </div>;
+  return (
+    <div>
+      <h2>Meet Our Sponsors</h2>
+      {sponsors.map((sponsor, index) => (
+        <section className="flex flex-wrap flex-col">
+          <div key={index}>
+            <Card className=" w-52 h-72">
+              <CardBody>
+                <CardTitle>
+                  <h3>{sponsor.name}</h3>
+                </CardTitle>
+                <CardText>
+                  <p>{sponsor.description}</p>
+                </CardText>
+              </CardBody>
+            </Card>
+          </div>
+        </section>
+      ))}
+    </div>
+  );
 }

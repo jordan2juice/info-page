@@ -6,8 +6,8 @@ import { getAuth } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithPopup } from "firebase/auth";
-import { signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyB20u9oJEJ8gbD27eFbCk7cS7TKJYkZAuI",
@@ -22,9 +22,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-expor;
-
 const googleProvider = new GoogleAuthProvider();
+export const db = getFirestore(app);
 
 export {
   auth,
@@ -33,4 +32,3 @@ export {
   signInWithPopup,
   getFirestore,
 };
-ig;

@@ -1,9 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import ModalSignUp from "./ModalSignUp";
+import ModalSignIn from "./ModalSignIn";
 
 export default function HeroSection() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -28,13 +34,29 @@ export default function HeroSection() {
               park mlkshk tote bag selvage hot chicken authentic tumeric
               truffaut hexagon try-hard chambray.
             </p>
-            <div className="flex justify-center">
-              <button className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-700 rounded text-lg">
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={handleShow}
+                className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-700 rounded text-lg"
+              >
                 Sign In
               </button>
-              <button className="ml-4 inline-flex text text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-700 rounded text-lg">
+              <ModalSignIn
+                show={show}
+                handleClose={handleClose}
+                handleShow={handleShow}
+              />
+              <button
+                className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-700 rounded text-lg"
+                onClick={handleShow}
+              >
                 Sign Up
               </button>
+              <ModalSignUp
+                show={show}
+                handleClose={handleClose}
+                handleShow={handleShow}
+              />
             </div>
           </div>
         </div>
