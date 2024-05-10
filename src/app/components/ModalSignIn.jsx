@@ -1,7 +1,9 @@
 "use client";
 
+import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Button, Form, Modal, ModalBody, ModalHeader } from "react-bootstrap";
+import { auth } from "../../../firebase.config";
 
 export default function ModalSignIn({ show, handleClose }) {
   const [email, setEmail] = useState("");
@@ -23,7 +25,7 @@ export default function ModalSignIn({ show, handleClose }) {
     <div>
       <Modal show={show} onHide={handleClose}>
         <ModalHeader closeButton>
-          <Modal.Title>Sign Up</Modal.Title>
+          <Modal.Title>Sign In</Modal.Title>
         </ModalHeader>
         <ModalBody>
           <Form onSubmit={handleSubmit}>

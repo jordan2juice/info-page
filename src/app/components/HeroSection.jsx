@@ -6,9 +6,12 @@ import ModalSignUp from "./ModalSignUp";
 import ModalSignIn from "./ModalSignIn";
 
 export default function HeroSection() {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showIn, setShowIn] = useState(false);
+  const handleCloseIn = () => setShowIn(false);
+  const handleShowIn = () => setShowIn(true);
+  const [showUp, setShowUp] = useState(false);
+  const handleCloseUp = () => setShowUp(false);
+  const handleShowUp = () => setShowUp(true);
 
   return (
     <div>
@@ -36,26 +39,26 @@ export default function HeroSection() {
             </p>
             <div className="flex justify-center gap-4">
               <button
-                onClick={handleShow}
+                onClick={handleShowIn}
                 className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-700 rounded text-lg"
               >
                 Sign In
               </button>
               <ModalSignIn
-                show={show}
-                handleClose={handleClose}
-                handleShow={handleShow}
+                show={showIn}
+                handleClose={handleCloseIn}
+                handleShow={handleShowIn}
               />
               <button
                 className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-700 rounded text-lg"
-                onClick={handleShow}
+                onClick={handleShowUp}
               >
                 Sign Up
               </button>
               <ModalSignUp
-                show={show}
-                handleClose={handleClose}
-                handleShow={handleShow}
+                show={showUp}
+                handleClose={handleCloseUp}
+                handleShow={handleShowUp}
               />
             </div>
           </div>

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { Button, Form, Modal, ModalBody, ModalHeader } from "react-bootstrap";
-import { auth } from "../../../firebase.config";
+import { auth, createUserWithEmailAndPassword } from "../../../firebase.config";
 
 export default function ModalSignUp({ show, handleClose }) {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ export default function ModalSignUp({ show, handleClose }) {
     e.preventDefault();
     try {
       console.log("Submitted form.");
-      await createImageBitmap(auth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
       console.log("User created.");
       setEmail("");
       setPassword("");
@@ -28,7 +28,7 @@ export default function ModalSignUp({ show, handleClose }) {
     <div>
       <Modal show={show} onHide={handleClose}>
         <ModalHeader closeButton>
-          <Modal.Title>Sign In</Modal.Title>
+          <Modal.Title>Sign Up</Modal.Title>
         </ModalHeader>
         <ModalBody>
           <Form onSubmit={handleSubmit}>
