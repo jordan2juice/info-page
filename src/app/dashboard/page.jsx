@@ -34,7 +34,14 @@ export default function page() {
     <main>
       <NavBar />
       <Posts />
-      {show && <Modal onShow={onShow} />}
+      <div className="w-full md:w-1/2 xl:w-1/3 p-4">
+        <form>
+          <input type="text" />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      {/* {show && <Modal onShow={onShow} />} */}
       <Sponsors />
       <Footer />
     </main>
