@@ -17,6 +17,7 @@ export default function page() {
 
   function onShow(bool) {
     setShow(bool);
+    console.error("Not closing box");
   }
 
   useEffect(() => {
@@ -24,7 +25,7 @@ export default function page() {
       if (user) {
         setUser(user);
       } else {
-        // router.push("/");
+        router.push("/");
       }
       return () => unsub();
     });
@@ -34,14 +35,7 @@ export default function page() {
     <main>
       <NavBar />
       <Posts />
-      <div className="w-full md:w-1/2 xl:w-1/3 p-4">
-        <form>
-          <input type="text" />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-
-      {/* {show && <Modal onShow={onShow} />} */}
+      {show && <Modal show={show} onShow={onShow} />}
       <Sponsors />
       <Footer />
     </main>

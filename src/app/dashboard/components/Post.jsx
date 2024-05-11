@@ -16,6 +16,7 @@ export default function Post({ post }) {
           </Card.Text>
         </Card.Body>
       </Card>
+      <
     </div>
   );
 }

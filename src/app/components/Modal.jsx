@@ -5,22 +5,24 @@ import React, { useState } from "react";
 import { auth, db } from "../../../firebase.config";
 
 export default function Modal({ onShow }) {
-  const [show, setShow] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   async function addPost() {
-    // const userId = auth.currentUser?.uid;
+    const userId = auth.currentUser.uid;
     const newPost = {
       title: title,
       content: content,
-    //   userId: userId,
+      userId: userId,
     };
+    console.log(newPost);
+    console.log(userId);
     await addDoc(collection(db, "posts"), newPost);
   }
 
+
+
   async function handleSubmit(e) {
-    console.log("Error submitting");
     e.preventDefault;
     try {
       await addPost();
@@ -28,7 +30,7 @@ export default function Modal({ onShow }) {
       setContent("");
       onShow(false);
     } catch (error) {
-      console.error("Error in sign up.", error);
+      console.error("Error submitting.", error);
     }
   }
 

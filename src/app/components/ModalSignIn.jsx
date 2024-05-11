@@ -13,11 +13,11 @@ export default function ModalSignIn({ show, handleClose }) {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      console.log("User created.");
+      console.log("User signed in.");
       setEmail("");
       setPassword("");
     } catch (error) {
-      console.error("Error in sign up.", error);
+      console.error("Error in sign in.", error);
     }
   }
 

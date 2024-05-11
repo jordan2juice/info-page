@@ -5,11 +5,13 @@ import Link from "next/link";
 import React, { useState } from "react";
 import ModalSignUp from "./ModalSignUp";
 import { auth } from "../../../firebase.config";
+import { useRouter } from "next/navigation";
 
 export default function NavBar() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const router = useRouter();
 
   async function handleLogOut() {
     await auth.signOut();
@@ -49,6 +51,7 @@ export default function NavBar() {
             handleShow={handleShow}
           />
           <button
+            onClick={handleLogOut}
             className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
           >
             Log Out

@@ -19,17 +19,25 @@ export default function Posts() {
   useEffect(() => {
     const userId = auth.currentUser?.uid;
     if (user) {
-      const q = query(collection(db, "posts"), where("userId", "==", "userId"));
+      const q = query(
+        collection(db, "posts"),
+        where("userId", "==", "user uid")
+      );
       const unsub = onSnapshot(collection(db, "posts"), (snapshot) => {
         const todoArray = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
         setPosts(todoArray);
+        console.log("user of post");
+        console.log(user.email);
       });
       return () => unsub();
     }
+    
   }, [user]);
+  console.log(posts);
+  console.log(user);
 
   return (
     <section>
