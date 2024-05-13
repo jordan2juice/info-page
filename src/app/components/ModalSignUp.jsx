@@ -4,10 +4,12 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { Button, Form, Modal, ModalBody, ModalHeader } from "react-bootstrap";
 import { auth, createUserWithEmailAndPassword } from "../../../firebase.config";
+import { updateProfile } from "firebase/auth";
 
 export default function ModalSignUp({ show, handleClose }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const router = useRouter();
 
   async function handleSubmit(e) {
@@ -16,6 +18,7 @@ export default function ModalSignUp({ show, handleClose }) {
       console.log("Submitted form.");
       await createUserWithEmailAndPassword(auth, email, password);
       console.log("User created.");
+      await updateProfile(auth.currentUser, { displayName });
       setEmail("");
       setPassword("");
       router.push("/");
@@ -33,6 +36,13 @@ export default function ModalSignUp({ show, handleClose }) {
         <ModalBody>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Display Name</Form.Label>
+              <Form.Control
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+                type="text"
+                placeholder="Display Name"
+              />
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 value={email}

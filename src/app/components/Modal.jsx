@@ -20,8 +20,6 @@ export default function Modal({ onShow }) {
     await addDoc(collection(db, "posts"), newPost);
   }
 
-
-
   async function handleSubmit(e) {
     e.preventDefault;
     try {
@@ -80,6 +78,13 @@ export default function Modal({ onShow }) {
                   className="px-6 py-2 rounded-md text-black text-sm border-none outline-red-500 bg-slate-300 hover: bg-gray-200 active: bg-slate-200"
                 ></textarea>
               </label>
+              <button
+                onClick={handleSubmit}
+                type="button"
+                className="px-6 py-2 rounded-md text-white text-sm border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600"
+              >
+                Save
+              </button>
             </form>
           </div>
           <div className="border-t flex justify-end pt-6 space-x-4">
@@ -89,13 +94,6 @@ export default function Modal({ onShow }) {
               className="px-6 py-2 rounded-md text-black text-sm border-none outline-none bg-gray-200 hover:bg-gray-300 active:bg-gray-200"
             >
               Cancel
-            </button>
-            <button
-              onClick={handleSubmit}
-              type="button"
-              className="px-6 py-2 rounded-md text-white text-sm border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600"
-            >
-              Save
             </button>
           </div>
         </div>

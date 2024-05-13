@@ -2,13 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
-import Modal from "../components/Modal";
+// import Modal from "../components/Modal";
 import Sponsors from "../components/Sponsors";
 import Footer from "../components/Footer";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../../firebase.config";
 import { useRouter } from "next/navigation";
 import Posts from "./components/Posts";
+import PostForm from "../components/PostForm";
 
 export default function page() {
   const [show, setShow] = useState(true);
@@ -34,8 +35,9 @@ export default function page() {
   return (
     <main>
       <NavBar />
+      <PostForm />
       <Posts />
-      {show && <Modal show={show} onShow={onShow} />}
+      {/* {show && <Modal show={show} onShow={onShow} />} */}
       <Sponsors />
       <Footer />
     </main>
