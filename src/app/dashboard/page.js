@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import Posts from "./components/Posts";
 import PostForm from "../components/PostForm";
 
-export default function page() {
+export default function Page() {
   const [show, setShow] = useState(true);
   const [user, setUser] = useState(null);
   const router = useRouter();
