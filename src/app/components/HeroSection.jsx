@@ -19,6 +19,7 @@ export default function HeroSection() {
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
             <Image
+              alt="hero"
               className="object-cover object-center rounded"
               height={300}
               width={500}

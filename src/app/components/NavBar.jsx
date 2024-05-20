@@ -23,7 +23,7 @@ export default function NavBar() {
       <header className="text-gray-600 body-font">
         <div className=" container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link href={""}>
-            <Image height={50} width={150} src={"/logo.png"}></Image>
+            <Image alt="logo" height={50} width={150} src={"/logo.png"}></Image>
           </Link>
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
             <Link href={"/"} className="mr-5 hover: text-red-900">

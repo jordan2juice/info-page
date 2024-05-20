@@ -29,7 +29,11 @@ export default function LocalNews() {
         {news.map((articles, index) => (
           <div key={index} className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
             <div className="bg-white shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-sm rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4">
-              <img src={articles.image} className="w-full rounded-lg"></img>
+              <img
+                alt="article"
+                src={articles.image}
+                className="w-full rounded-lg"
+              ></img>
               <div className="px-4 my-6">
                 <h3 className="text-lg font-semibold">{articles.title}</h3>
                 <p className="mt-2 text-sm text-gray-400">

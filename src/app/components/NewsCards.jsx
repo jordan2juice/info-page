@@ -7,6 +7,7 @@ export default function NewsCards() {
     <div>
       <div className="bg-white shadow-[0_8px_12px_-6px_rgba(0,0,0,0.2)] border p-2 w-full max-w-sm rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4">
         <img
+          alt="news photo"
           src="https://readymadeui.com/cardImg.webp"
           className="w-full rounded-lg"
         />
