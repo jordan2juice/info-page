@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import CommentBox from "./CommentBox";
-import { collection, doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../../firebase.config";
 
 export default function Post({ post }) {
