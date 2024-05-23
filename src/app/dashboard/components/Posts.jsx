@@ -1,6 +1,13 @@
 "use client";
 
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../../../../firebase.config";
 import Post from "./Post";
@@ -66,6 +73,8 @@ export default function Posts() {
           <Post key={post.id} post={post} getDisplayName={getDisplayName} />
         ))}
       </div>
+
+      {user && <p className="text-center">{user.email}</p>}
     </section>
   );
 }

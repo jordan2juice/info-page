@@ -1,14 +1,16 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import CommentBox from "./CommentBox";
-import { doc, updateDoc } from "firebase/firestore";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../../firebase.config";
 
 export default function Post({ post }) {
   const [likes, setLikes] = useState(0);
   const [dislike, setDislike] = useState(0);
+
+  const [deletePost, setDeletePost] = useState(null);
 
   const handleLike = () => {
     setLikes(likes + 1);
@@ -22,6 +24,12 @@ export default function Post({ post }) {
       dislike: dislike + 1,
     });
   };
+
+  async function deletePosts() {
+    await deleteDoc(doc(db, "posts", post.id));
+    setDeletePost(post.id);
+    console.log("Post deleted");
+  }
 
   return (
     <div>
@@ -59,6 +67,7 @@ export default function Post({ post }) {
               </button>
             </>
           </Card.Text>
+          <Button onClick={deletePosts}>Delete</Button>
         </Card.Body>
       </Card>
       <CommentBox />

@@ -17,7 +17,7 @@ export default function CommentBox() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
 
-
+  const [deleteComment, setDeleteComment] = useState("No Comment");
 
   const getUser = (user) => {
     setUser(user);
@@ -29,7 +29,6 @@ export default function CommentBox() {
 
   const hh = String(new Date().getHours()).padStart(2, "0");
 
-  useEffect(() => {});
   // Listen for authentication state to know if a user is logged in or not
 
   useEffect(() => {
@@ -58,9 +57,18 @@ export default function CommentBox() {
     return () => usub();
   }, []);
 
-  async function deleteComments(post) {
-    await deleteDoc(doc(db, "comments", post.id));
-    setDeleteComment(post.id);
+  useEffect(() => {
+    // Listen for new comments and add them to the comments array
+    if (deleteComment !== "No Comment") {
+      setComments(comments.filter((comment) => comment.id !== deleteComment));
+      setDeleteComment("No Comment");
+      console.log("Comment deleted");
+    }
+  }, [deleteComment]);
+
+  async function deleteComments(id) {
+    await deleteDoc(doc(db, "comments", id));
+    setDeleteComment(id);
     console.log("Comment deleted");
   }
 
@@ -122,17 +130,16 @@ export default function CommentBox() {
             <div>
               <ul>
                 <li>{comment.comment}</li>
-                
               </ul>
               <small>{comment.date}</small>
             </div>
             <div className="flex gap-3 justify-items-end">
-              <button
+              {/* <button
                 onClick={deleteComments}
                 className="w-1/4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
               >
                 Delete
-              </button>
+              </button> */}
               <small>{comment.date}</small>
             </div>
           </div>
